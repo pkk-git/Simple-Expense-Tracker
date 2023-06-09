@@ -3,7 +3,11 @@ import {GlobalContext} from "../context/GlobalState.jsx"
 import Transaction from "./Transaction.jsx"
 
 let TransactionList = () => {
-    let {transactions} = React.useContext(GlobalContext);
+    let {transactions, getTransactions} = React.useContext(GlobalContext);
+    React.useEffect(() => {
+        getTransactions();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     return <>
     <div className="card">
         <div className="card-header">
